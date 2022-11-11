@@ -1,9 +1,12 @@
 class Usuario {
+    static cantidadUsuarios = 0; //Probando variables de clase.
+
     constructor(nm,lnm){
         this.name = nm;
         this.lastName = lnm;
         this.books = [];
         this.pets = [];
+        Usuario.cantidadUsuarios = ++Usuario.cantidadUsuarios;
     }
     getFullName(){
         return (`${this.name} ${this.lastName}`);
@@ -35,7 +38,9 @@ class Usuario {
     }
 }
 
-let user = new Usuario('Ramiro', 'Vechiola');
+const user = new Usuario('Ramiro', 'Vechiola');
+const user2 = new Usuario('Rafael', 'Ochoa');
+const user3 = new Usuario('Ezequiel', 'Chamarez');
 
 user.addPet('Perro');
 user.addPet('Gato');
@@ -56,3 +61,5 @@ console.log(user.showBooks());
 
 console.log('TITULOS DE LIBROS:');
 console.log(user.getBooksNames());
+
+console.log(`INSTANCIAS GENERADAS DE CLASE: ${Usuario.cantidadUsuarios}`);
