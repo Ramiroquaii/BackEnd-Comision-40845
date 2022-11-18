@@ -22,3 +22,6 @@ Los valores de los atributos se deberán cargar a través del constructor, al mo
 **getBookNames(): String[]. Retorna un array con sólo los nombres del array de libros del usuario.**
 - 4) Crear un objeto llamado usuario con valores arbitrarios e invocar todos sus métodos.
 
+
+https://gist.github.com/ochoacabriles/117937b7739d9ffa95c1ea17de9ed2d3
+https://gist.github.com/Andru-1987/93537a67decbf494d1ada1c2315421c1
