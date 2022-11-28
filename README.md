@@ -7,6 +7,22 @@ Coder HouseCurso - Curso BackEnd
 
 *Tutoe Personal:* **Michel Douglas Ezequiel Chamarez Richards**
 
+# DESAFIO ARCHIVOS JUEVES 24/11/2022 23:59HS
+EXPIRA EL JUEVES 01/12/2022 23:59HS
+
+Consigna - Realizar un proyecto de servidor basado en node.js que utilice el módulo express e implemente los siguientes endpoints en el puerto 8080:
+**Ruta get '/productos' que devuelva un array con todos los productos disponibles en el servidor**
+**Ruta get '/productoRandom' que devuelva un producto elegido al azar entre todos los productos**
+
+- Incluir un archivo de texto 'productos.txt' y utilizar la clase Contenedor del desafío anterior para acceder a los datos persistidos del servidor. Antes de iniciar el servidor, colocar en el archivo 'productos.txt' tres productos como en el ejemplo del desafío anterior.
+
+Datos cargados de ejemplo:
+[
+ {"id":1,"name":"Abradolf Lincler","image":"https://rickandmortyapi.com/api/character/avatar/7.jpeg"},
+ {"id":2,"name":"Albert Einstein","image":"https://rickandmortyapi.com/api/character/avatar/11.jpeg"},
+ {"id":3,"name":"Ants in my Eyes Johnson","image":"https://rickandmortyapi.com/api/character/avatar/20.jpeg"}
+]
+
 # DESAFIO ENTREGABLE - MANEJO DE ARCHIVOS JS
 EXPIRA EL JUEVES 24/11/2022 23:59HS
 
