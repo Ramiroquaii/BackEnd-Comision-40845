@@ -38,7 +38,7 @@ class ContenedorArchivo {
     }
 
     save = async (product) => {        
-        const fileData = fs.readFileSync(`./${this.fileName}.txt`, 'utf-8'); // Copio contenido archivo.
+        const fileData = fs.readFileSync(`./${this.fileName}.txt`, 'utf-8');  // Copio contenido archivo.
         const fileDataJson = JSON.parse(fileData);                            // Convierto el string en formato JSON Array.
         const objet = fileDataJson[( fileDataJson.length - 1)];               // Obtengo el ultimo elemento.
         const newID = objet.id + 1;                                           // Genero un nuevo ID sumando 1 al ultimo ID existente.
@@ -105,4 +105,4 @@ class ContenedorArchivo {
     }
 }
 
-module.exports = ContenedorArchivo;
+module.exports = ContenedorArchivo; // Exportacion del modulo de este archivo para ser usado en otros sitios.
