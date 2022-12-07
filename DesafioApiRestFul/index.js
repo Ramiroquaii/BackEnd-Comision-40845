@@ -20,28 +20,41 @@
 const express = require('express');
 const { Router } = express;
 
-const app = express();
+const app = express();   // Instancia del servidor.
 
-app.use(express.json());
+app.use(express.json()); // JSON format para el req.body
 
-const productRouter = Router();
+const productRouter = Router(); // Generacion del objeto ruta.
+
+// Defino las rutas de acceso.
+app.use('/api/productos', productRouter);
+app.use('/api/productos/:id', productRouter);
+
 productRouter.get('/', (req, res) => {
-    const { pos } = req.params;
-
-    if(pos){
-        res.send(`Por SI ${pos}`);
-    }else{
-        res.send(`Por NO ${pos}`);
-    }
+    res.send(`GET All Products`);
 });
 
-productRouter.post('/', (req, res) => res.send("Request POST Add"));
-productRouter.put('/', (req, res) => res.send("Request PUT Update"));
-productRouter.delete('/', (req, res) => res.send("Request DELETE"));
+productRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
+    res.send(`GET Product Id: ${id}`);
+});
 
-app.use('/api/productos', productRouter);
-app.use('/api/productos/:pos', productRouter);
+productRouter.post('/', (req, res) => {
+    res.send("Request POST Add");
+});
 
+productRouter.put('/:id', (req, res) => {
+    const { id } = req.params;
+    res.send(`Request PUT Update Id: ${id}`);
+});
+
+productRouter.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    res.send(`Request DELETE Id: ${id}`);
+});
+
+
+// Inicio la escucha del servidor.
 const PORT = 8080;
 app.listen(PORT, ()=> console.log(`Listening on port: ${PORT}`));
 
