@@ -17,69 +17,119 @@
 // # Las respuestas del servidor serán en formato JSON.
 // # La funcionalidad será probada a través de Postman y del formulario de ingreso.
 
-const express = require('express');
-const { Router } = express;
+const express = require('express');             // Uso de la libreria Express.
+const { Router } = express;                     // Uso de paquete de Rutas de Express.
 
-const app = express();   // Instancia del servidor.
+const app = express();                          // Instancia del servidor.
 
-app.use(express.json()); // JSON format para el req.body
+app.use(express.json());                        // JSON format para el req.body
+app.use(express.static('public'));              // Uso de carpeta public como raiz para archivo Index.html
+app.use(express.urlencoded({extended: true}));
 
-const productRouter = Router(); // Generacion del objeto ruta.
+const apiProductRouter = Router();  // Generacion del objeto ruta para api JSON.
+const htmlProductRouter = Router(); // Generacion del objeto ruta para consumo desde navegador.
+
+const ContenedorArchivo = require('./contenedorArchivo'); // Uso del modulo del sesafio anterior de archivos.
+
+const fileProducts = new ContenedorArchivo('productos');      // Genero la instancia del archivo txt como base de datos.
+
+let arrayProducts = fileProducts.getAll();                    // Convierto los datos del archivo a memoria para simplificar uso.
+
 
 // Defino las rutas de acceso.
-app.use('/api/productos', productRouter);
-app.use('/api/productos/:id', productRouter);
+app.use('/api/productos', apiProductRouter);
+app.use('/api/productos/:id', apiProductRouter);
 
-productRouter.get('/', (req, res) => {
-    res.send(`GET All Products`);
+app.use('/html/productos/', htmlProductRouter);
+app.use('/html/productos/:id', htmlProductRouter);
+
+// ***** ▼▼ Estos metodos retornan segmentos de HTML son visualizables desde el navegador ▼▼ ***** //
+htmlProductRouter.get('/', (req, res) => {
+    let html = "";
+    arrayProducts.forEach(element => {       // Generando el string de contenido HTML.
+        html += `<p style="color:red;">${element.name}</p>
+        <img src="${element.image}" alt="${element.name}" width="100" height="100">`;
+    });
+    res.send(
+        `<h1 style="color:blue;">Productos Disponibles</h1>
+        ${html}`
+    );
 });
 
-productRouter.get('/:id', (req, res) => {
+htmlProductRouter.get('/:id', (req, res) => {
     const { id } = req.params;
-    res.send(`GET Product Id: ${id}`);
+    let html = `<p style="color:red;">NO ENCONTRADO</p>`;
+    let objectById = arrayProducts.find(element => element.id == id);
+    if(objectById != undefined){
+        html = `<p style="color:red;">${objectById.name}</p>
+        <img src="${objectById.image}" alt="${objectById.name}" width="100" height="100">`;
+    }
+    res.send(
+        `<h1 style="color:blue;">Producto Buscado por ID: ${id}</h1>
+        ${html}`
+    );
+});
+// ***** ▲▲ Estos metodos retornan segmentos de HTML son visualizables desde el navegador ▲▲ ***** //
+
+
+// GET request que retorna todo el array de productos en formato JSON.
+apiProductRouter.get('/', (req, res) => {
+    res.json(arrayProducts);
 });
 
-productRouter.post('/', (req, res) => {
-    res.send("Request POST Add");
+
+// GET request que recibe ID para retornar el objeto que coincida con el ID indicado.
+apiProductRouter.get('/:id', (req, res) => {
+    const { id } = req.params;                                          // Id recibido por ruta URL
+    let objectById = arrayProducts.find(element => element.id == id);   // Busco el producto con el ID indicado.
+    if(objectById != undefined){                                        // Evaluo si encontre o no el producto.
+        res.json(objectById);                                           // Retorno el objeto solicitado.
+    } else {
+        res.send("NOT FOUND");                                          // Producto inexistente.
+    }
 });
 
-productRouter.put('/:id', (req, res) => {
+
+// POST request que recibe en formato JSON las key de un nuevo producto a ser agregado.
+// En nuevo ID para el producto es generado en este metodo tembien.
+apiProductRouter.post('/', (req, res) => {
+    const { name, imgurl } = req.body;                       // Recepcion de parametros del request.
+    const newId = arrayProducts.length + 1;                 // Generacion del ID - Un numero mas del último.
+    const newObj = { id: newId, name: name, image: imgurl }; // Construccion del nuevo objeto producto.
+    arrayProducts.push(newObj);                             // Añadido al array de productos.
+    res.json(newObj);                                       // Retorno nuevo producto ya con su nuevo ID.
+});
+
+
+// PUT request que actualiza un producto por su ID.
+apiProductRouter.put('/:id', (req, res) => {
     const { id } = req.params;
-    res.send(`Request PUT Update Id: ${id}`);
+    const { name, imgurl } = req.body;
+
+    const indexObjet = arrayProducts.findIndex(element => element.id == id);
+    if ( indexObjet != -1 ) {
+        arrayProducts[indexObjet].name  = name;
+        arrayProducts[indexObjet].image = imgurl;
+        res.json(arrayProducts[indexObjet]);
+    } else {
+        res.send("NOT FOUND - NOT UPDATED"); 
+    }
 });
 
-productRouter.delete('/:id', (req, res) => {
+
+// DELETE request que borra el producto del ID indicado si existe.
+apiProductRouter.delete('/:id', (req, res) => {
     const { id } = req.params;
-    res.send(`Request DELETE Id: ${id}`);
+    const indexObjet = arrayProducts.findIndex(element => element.id == id);    // Busco el indice del producto indicado.
+    if ( indexObjet != -1 ) {                                                   // Evaluo si existe o no el producto.
+        const deletedProd = arrayProducts.splice(indexObjet, 1);                // De existir lo borro.
+        res.json(deletedProd);                                                  // Retorno el producto borrado.
+    } else {
+        res.send("NOT FOUND - NOT DELETED");                                    // Producto inexistente - No hay acción.
+    }
 });
 
 
 // Inicio la escucha del servidor.
 const PORT = 8080;
 app.listen(PORT, ()=> console.log(`Listening on port: ${PORT}`));
-
-
-
-
-// https://gist.github.com/ochoacabriles/0aeab3d22473f1ae0f5c0d8b3dbdefe8    ############ GIST Profesor
-
-
-
-// POSTMAN ############################################################################################
-
-// ramiroscar@gmail.com
-
-// Ramiroquaii
-// coswe.rh3ton
-
-
-// https://app.getpostman.com/join-team?invite_code=bd0d42f7413fa7fd2e71c0c2842dd2ab    LINK Invitavion
-
-
-// REMOVER CARACTERES DE UN STRING ################################
-// const remover = ['.','¿','?','!'];
-// for (let char of remover) { frase = frase.replaceAll(char,' ') }
-// frase
-// .split(' ')
-// .map(word => word.trim())
-// .filter(word => word != '');

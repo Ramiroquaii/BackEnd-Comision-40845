@@ -7,7 +7,25 @@ Coder HouseCurso - Curso BackEnd
 
 *Tutoe Personal:* **Michel Douglas Ezequiel Chamarez Richards**
 
-# DESAFIO ENTREGABLE - SERVER WEB ESPRESS JS
+# DESAFIO ENTREGABLE - API REST FUL EXPRESS JS
+EXPIRA EL JUEVES 08/12/2022 23:59HS
+
+Consigna - Realizar un proyecto de servidor basado en node.js y express que ofrezca una API RESTful de productos.
+En detalle, que incorpore las siguientes rutas:
+**GET '/api/productos' -> devuelve todos los productos.**
+**GET '/api/productos/:id' -> devuelve un producto según su id.**
+**POST '/api/productos' -> recibe y agrega un producto, y lo devuelve con su id asignado.**
+**PUT '/api/productos/:id' -> recibe y actualiza un producto según su id.**
+**DELETE '/api/productos/:id' -> elimina un producto según su id.**
+
+- Se implementan los metodos que retornan formato JSON en /api/productos
+- Se implemente a modo de prueba retorno de bloque HTML consumible desde navegador en /html/productos (solo GET)
+
+## No se tiene en cuanta duplicacion al incorporar nuevos productos.
+- Se implemente pequeño formulario de alta de producto en index.html desde ruta raiz "/"
+
+
+# DESAFIO ENTREGABLE - SERVER WEB EXPRESS JS
 EXPIRA EL JUEVES 01/12/2022 23:59HS
 
 Consigna - Realizar un proyecto de servidor basado en node.js que utilice el módulo express e implemente los siguientes endpoints en el puerto 8080:
