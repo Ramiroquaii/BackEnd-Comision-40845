@@ -1,0 +1,27 @@
+{
+  "name": "desafioapirestful",
+  "version": "1.0.0",
+  "description": "API RESTful completa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ramiroquaii/BackEnd-Comision-40845.git"
+  },
+  "keywords": [
+    "API",
+    "RESTful",
+    "Postman"
+  ],
+  "author": "Ramiro Vechiola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ramiroquaii/BackEnd-Comision-40845/issues"
+  },
+  "homepage": "https://github.com/Ramiroquaii/BackEnd-Comision-40845#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -7,6 +7,22 @@ Coder HouseCurso - Curso BackEnd
 
 *Tutoe Personal:* **Michel Douglas Ezequiel Chamarez Richards**
 
+
+# DESAFIO ENTREGABLE - MOTORES DE PLANTILLAS
+EXPIRA EL MARTE 20/12/2022 23:59HS
+
+Consigna - Utilizando la misma API de productos del proyecto entregable de la clase anterior, construir un web server (no REST) que incorpore:
+Un formulario de carga de productos en la ruta raíz (configurar la ruta '/productos' para recibir el POST, y redirigir al mismo formulario).
+Una vista de los productos cargados (utilizando plantillas de handlebars) en la ruta GET '/productos'.
+Ambas páginas contarán con un botón que redirija a la otra.
+
+**GET '/productos' tabla dinamica con handlebars de productos.**
+**POST '/productos' formulario de carga de productos.**
+
+- Se plantea la implementacion de plantillas PUG y EJS para futuro por falta de tiempo.
+- Se continua usando la lectura de archivo de texto para cargr inicialmente los productos, si vien es posible actualizar los archivo con los nuevos productos cargados estos solamente se utilizan de forma dinamica en memoria y no son guardados.
+
+
 # DESAFIO ENTREGABLE - API REST FUL EXPRESS JS
 EXPIRA EL JUEVES 08/12/2022 23:59HS
 
