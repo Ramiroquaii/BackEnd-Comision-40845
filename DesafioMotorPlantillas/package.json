@@ -4,6 +4,9 @@
   "description": "Motores de Plantillas",
   "main": "index.js",
   "scripts": {
+    "hbs": "node handlebars/src/hbs.js",
+    "pug": "node pug/src/pug.js",
+    "ejs": "node ejs/src/ejs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

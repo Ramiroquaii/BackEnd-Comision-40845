@@ -11,16 +11,22 @@ Coder HouseCurso - Curso BackEnd
 # DESAFIO ENTREGABLE - MOTORES DE PLANTILLAS
 EXPIRA EL MARTE 20/12/2022 23:59HS
 
-Consigna - Utilizando la misma API de productos del proyecto entregable de la clase anterior, construir un web server (no REST) que incorpore:
-Un formulario de carga de productos en la ruta raíz (configurar la ruta '/productos' para recibir el POST, y redirigir al mismo formulario).
-Una vista de los productos cargados (utilizando plantillas de handlebars) en la ruta GET '/productos'.
-Ambas páginas contarán con un botón que redirija a la otra.
+Consigna - Utilizando la misma API de productos del proyecto entregable de la clase anterior, construir un web server (no REST) que incorpore: Un formulario de carga de productos en la ruta raíz (configurar la ruta '/productos' para recibir el POST, y redirigir al mismo formulario). Una vista de los productos cargado (utilizando plantillas de handlebars) en la ruta GET '/productos'. Ambas páginas contarán con un botón que redirija a la otra.
 
-**GET '/productos' tabla dinamica con handlebars de productos.**
+**GET '/productos' tabla dinamica con productos.**
+
 **POST '/productos' formulario de carga de productos.**
 
-- Se plantea la implementacion de plantillas PUG y EJS para futuro por falta de tiempo.
-- Se continua usando la lectura de archivo de texto para cargr inicialmente los productos, si vien es posible actualizar los archivo con los nuevos productos cargados estos solamente se utilizan de forma dinamica en memoria y no son guardados.
+**Los tres mtores de platillas HBS, PUG y EJS implemntan la misma estructura**
+
+- Se continua usando la lectura de archivo de texto para cargr inicialmente los productos, si vien es posible actualiza el archivo con los nuevos productos cargados estos solamente se utilizan de forma dinamica en memoria y no son guardados posteriormente.
+
+- Se implementa el script de JSON para lanzar cada servidor (puertos diferentes para probar en paralelo):
+**npm run hbs  servidor en 8081** 
+
+**npm run pug  servidor en 8082**
+
+**npm run ejs  servidor en 8083**
 
 
 # DESAFIO ENTREGABLE - API REST FUL EXPRESS JS

@@ -1,0 +1,5 @@
+[
+{"id":1,"name":"Abradolf Lincler","price":100,"image":"https://rickandmortyapi.com/api/character/avatar/7.jpeg"},
+{"id":2,"name":"Albert Einstein","price":88,"image":"https://rickandmortyapi.com/api/character/avatar/11.jpeg"},
+{"id":3,"name":"Ants in my Eyes Johnson","price":210,"image":"https://rickandmortyapi.com/api/character/avatar/20.jpeg"}
+]
