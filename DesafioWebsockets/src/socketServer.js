@@ -28,7 +28,6 @@ Los mensajes deben persistir en el servidor en un archivo.
 const express = require('express');
 const { createServer } = require('http');
 const socketIo = require('socket.io');
-const { engine } = require('express-handlebars');
 
 const path = require ('path');  // Para el uso de rutas filePaths absolutos.
 
@@ -45,35 +44,27 @@ const fileProducts = new ContenedorArchivo('productos');            // Genero la
 let arrayProducts = fileProducts.getAll();                          // Leo todo el archivo y genero vector de trabajo dinamico en memoria.
 
 //--------------------------------------------
-app.set("view engine", "hbs");
-app.set("views", `${path.join(__dirname, `../views`)}`);
-
-app.engine('hbs',
-    engine({
-      extname: ".hbs",
-      defaultLayout: 'index.hbs',
-      layoutsDir: __dirname + '../views/layouts/',
-      partialsDir: __dirname + '../views/partials/'
-    })
-);
-//--------------------------------------------
 
 // Mensajes de prueba
 const messages = [
-  { author: "Juan", text: "¡Hola! ¿Que tal?" },
-  { author: "Pedro", text: "¡Muy bien! ¿Y vos?" },
-  { author: "Ana", text: "¡Genial!" }
+  { user: "Chat-Bot", time: "", text: "¡Bienvenido! Chat Global envie su mensaje..." }
 ];
 
 io.on('connection', client => {
   console.log(`Client ${client.id} connected`);
 
+  messages[0].time = getTime();
+
   client.emit('messages', messages);
+  client.emit('products', arrayProducts);
 
   client.on('new-message', message => {
-    messages.push(message);
 
-    io.sockets.emit('message-added', message);
+    let now = getTime();
+    const newMsg = { time: now, ...message };
+    messages.push(newMsg);
+
+    io.sockets.emit('message-added', newMsg);
   });
 
   client.on('new-product', message => {
@@ -81,10 +72,21 @@ io.on('connection', client => {
     const newObj = { id: newId, ...message };
     arrayProducts.push(newObj);
 
-    io.sockets.emit('product-added', message);
+    io.sockets.emit('product-added', newObj);
   });
 
 });
+
+function getTime(){
+  var currentdate = new Date(); 
+  var datetime =  currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+  return datetime;
+}
 
 const PORT = 8080;
 //server.listen(3000);

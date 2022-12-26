@@ -38,15 +38,39 @@
                 <!-- Botón de envío -->
                 <button class="btn btn-success mt-3" type="submit">Agregar</button>
             </form>
+            
+            <hr>
+
+            <h1>Lista de Productos</h1>
+
+            <div id="productList">
+            </div>
+
         </div>
     
-        <div class="jumbotron" id="productList">
-            <h1>Lista de Productos</h1>
-            {{> listPrd }}
-        </div>
-        <div class="jumbotron" id="chatContent">
+        <div class="jumbotron">
             <h1>Mensajeria de Chat</h1>
-            {{> chatMsg }}
+            <br>
+            <form onsubmit="return sendMessage(this)">
+                <!-- Campo nombre del producto -->
+                <div class="form-group">
+                    <label for="nombre">Nombre Usuario</label>
+                    <input id="usuario" class="form-control" type="text" name="chatUsr" required>
+                </div>
+
+                <!-- Campo precio del producto -->
+                <div class="form-group">
+                    <label for="precio">Mensaje</label>
+                    <input id="mensaje" class="form-control" type="text" name="chatMsg" required>
+                </div>
+
+                <!-- Botón de envío -->
+                <button class="btn btn-success mt-3" type="submit">Enviar</button>
+            </form>
+            <hr>
+            <div id="chatContent">
+            </div>
+
         </div>
     </div>
 

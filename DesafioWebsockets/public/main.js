@@ -1,11 +1,10 @@
 const socket = io();
 
 socket.on('messages', data => {
-  let html = '';
+  let html = document.getElementById('chatContent').innerHTML;
 
   data.forEach(message => {
-    html = `${html}
-    <li><em>${message.author}</em> says: ${message.text}</li>`
+    html += `<li><em>${message.user}</em> [ ${message.time} ] says: ${message.text}</li>`
   });
 
   document.getElementById('chatContent').innerHTML = `${html}`;
@@ -13,28 +12,49 @@ socket.on('messages', data => {
 
 socket.on('message-added', message => {
   let html = document.getElementById('chatContent').innerHTML;
-console.log({html})
-  html = `${html}
-  <li><em>${message.author}</em> says: ${message.text}</li>`;
+
+  html += `<li><em>${message.user}</em> [ ${message.time} ] says: ${message.text}</li>`;
 
   document.getElementById('chatContent').innerHTML = `${html}`;
 });
 
 const sendMessage = (that) => {
   const message = {
-    author: that.author.value,
-    text: that.text.value
+    user: that.chatUsr.value,
+    text: that.chatMsg.value
   };
   socket.emit('new-message', message);
 };
 
-socket.on('product-added', message => {
-  let html = document.getElementById('productContent').innerHTML;
-  //console.log({html})
-  html = `${html}
-  <li><em>${message.author}</em> says: ${message.text}</li>`;
 
-  document.getElementById('chatContent').innerHTML = `${html}`;
+
+
+
+socket.on('products', data => {
+  let html = document.getElementById('productList').innerHTML;
+
+  data.forEach(element => {
+    html = `${html}
+    <div class="table-line">
+    <p class="nameTb">${element.name}</p>
+    <p class="priceTd">$ ${element.price}</p>
+    <img src="${element.image}" alt="${element.name}">
+    </div>`;
+  });
+
+  document.getElementById('productList').innerHTML = `${html}`;
+});
+
+socket.on('product-added', message => {
+  let html = document.getElementById('productList').innerHTML;
+
+  html += `<div class="table-line">
+  <p class="nameTb">${message.name}</p>
+  <p class="priceTd">$ ${message.price}</p>
+  <img src="${message.image}" alt="${message.name}">
+  </div>`;
+  
+  document.getElementById('productList').innerHTML = `${html}`;
 });
 
 const sendProduct = (that) => {
@@ -45,4 +65,3 @@ const sendProduct = (that) => {
   };
   socket.emit('new-product', message);
 };
-
