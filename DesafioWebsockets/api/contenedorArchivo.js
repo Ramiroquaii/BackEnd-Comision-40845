@@ -56,6 +56,20 @@ class ContenedorArchivo {
         return (newID);
     }
 
+    saveChat = async (chatMsg) => {        
+        const fileData = fs.readFileSync(`${path.join(__dirname, `./${this.fileName}.txt`)}`, 'utf-8');  // Copio contenido archivo.
+        const fileDataJson = JSON.parse(fileData);                            // Convierto el string en formato JSON Array.
+        fileDataJson.push(chatMsg);                                        // Agrego al final el nuevo objeto.
+        const fileDataString = JSON.stringify(fileDataJson);                  // Convierto el string a texto.
+        
+        // Sobreescribo el archivo con el nuevo contenido.
+        try {
+            await fs.promises.writeFile(`${path.join(__dirname, `./${this.fileName}.txt`)}`, fileDataString);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     getRandom() {
         const fileData = fs.readFileSync(`./${this.fileName}.txt`, 'utf-8');
         const fileDataJson = JSON.parse(fileData);

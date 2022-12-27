@@ -18,7 +18,7 @@ email (texto negrita en azul)
 fecha y hora [DD/MM/YYYY HH:MM:SS] (texto normal en marrón)
 mensaje (texto italic en verde)
 
-correo@electronico.com [26/12/2022 10:00:00] : Mensaje enviado !!
+usuario/correo [26/12/2022 10:00:00] : Mensaje enviado !!
 
 Además incorporar dos elementos de entrada: uno para que el usuario ingrese su email (obligatorio para poder
 utilizar el chat) y otro para ingresar mensajes y enviarlos mediante un botón. 
@@ -43,6 +43,8 @@ const ContenedorArchivo = require('../api/contenedorArchivo.js');   // Uso del m
 const fileProducts = new ContenedorArchivo('productos');            // Genero la instancia del archivo txt como base de datos.
 let arrayProducts = fileProducts.getAll();                          // Leo todo el archivo y genero vector de trabajo dinamico en memoria.
 
+const chatLog = new ContenedorArchivo('chatLog');
+
 //--------------------------------------------
 
 // Mensajes de prueba
@@ -50,10 +52,10 @@ const messages = [
   { user: "Chat-Bot", time: "", text: "¡Bienvenido! Chat Global envie su mensaje..." }
 ];
 
+messages[0].time = getTime();
+
 io.on('connection', client => {
   console.log(`Client ${client.id} connected`);
-
-  messages[0].time = getTime();
 
   client.emit('messages', messages);
   client.emit('products', arrayProducts);
@@ -64,8 +66,11 @@ io.on('connection', client => {
     const newMsg = { time: now, ...message };
     messages.push(newMsg);
 
+    chatLog.saveChat(messages);
+
     io.sockets.emit('message-added', newMsg);
   });
+
 
   client.on('new-product', message => {
     const newId = arrayProducts.length + 1;
@@ -89,8 +94,7 @@ function getTime(){
 }
 
 const PORT = 8080;
-//server.listen(3000);
 server.listen(PORT, () => {
-  console.log(`Servidor http Handlebars WebSocket escuchando en el puerto ${server.address().port}`);
+  console.log(`Servidor http WebSocket escuchando en el puerto ${server.address().port}`);
 });
 server.on("error", error => console.log(`Error en servidor ${error}`));
