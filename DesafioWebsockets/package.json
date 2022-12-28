@@ -4,6 +4,7 @@
   "description": "Uso de Websocket - Canal Comunicación Cliente Servidor",
   "main": "index.js",
   "scripts": {
+    "socket": "node src/socketServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

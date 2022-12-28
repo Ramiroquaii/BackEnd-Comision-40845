@@ -33,7 +33,7 @@ const path = require ('path');  // Para el uso de rutas filePaths absolutos.
 
 const app = express();
 const server = createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {cors: {origin:"*"}});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -61,7 +61,6 @@ io.on('connection', client => {
   client.emit('products', arrayProducts);
 
   client.on('new-message', message => {
-
     let now = getTime();
     const newMsg = { time: now, ...message };
     messages.push(newMsg);
@@ -71,7 +70,6 @@ io.on('connection', client => {
     io.sockets.emit('message-added', newMsg);
   });
 
-
   client.on('new-product', message => {
     const newId = arrayProducts.length + 1;
     const newObj = { id: newId, ...message };
@@ -79,8 +77,8 @@ io.on('connection', client => {
 
     io.sockets.emit('product-added', newObj);
   });
-
 });
+
 
 function getTime(){
   var currentdate = new Date(); 

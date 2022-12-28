@@ -1,10 +1,13 @@
 const socket = io();
 
+
+// -------------- CHAT -----------------------------------------
+
 socket.on('messages', data => {
   let html = document.getElementById('chatContent').innerHTML;
 
   data.forEach(message => {
-    html += `<li><em>${message.user}</em> [ ${message.time} ] says: ${message.text}</li>`
+    html += `<div class="chatLine" li><p class="user">${message.user}&nbsp;</p> <p class="time">[ ${message.time} ] :&nbsp;</p> <p class="msg">${message.text}</p></div>`
   });
 
   document.getElementById('chatContent').innerHTML = `${html}`;
@@ -13,7 +16,7 @@ socket.on('messages', data => {
 socket.on('message-added', message => {
   let html = document.getElementById('chatContent').innerHTML;
 
-  html += `<li><em>${message.user}</em> [ ${message.time} ] says: ${message.text}</li>`;
+  html += `<div class="chatLine" li><p class="user">${message.user}</p> <p class="time">[ ${message.time} ] : </p> <p class="msg">${message.text}</p></div>`;
 
   document.getElementById('chatContent').innerHTML = `${html}`;
 });
@@ -27,8 +30,7 @@ const sendMessage = (that) => {
 };
 
 
-
-
+// -------------- PRODUCTOS -----------------------------------------
 
 socket.on('products', data => {
   let html = document.getElementById('productList').innerHTML;
