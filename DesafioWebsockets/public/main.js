@@ -1,5 +1,33 @@
 const socket = io();
 
+const btnProduct = document.querySelector("#btn-newProduct");
+btnProduct.addEventListener("click", addNewProduct);
+
+const btnMessage = document.querySelector("#btn-newMessage");
+btnMessage.addEventListener("click", addNewMessage);
+
+function addNewProduct(event) {
+  event.preventDefault();
+
+  const product = {
+    name: document.getElementById('nombre').value,
+    price: document.getElementById('precio').value,
+    image: document.getElementById('foto').value
+  };
+
+  socket.emit('new-product', product);
+}
+
+function addNewMessage(event) {
+  event.preventDefault();
+
+  const message = {
+    user: document.getElementById('usuario').value,
+    text: document.getElementById('mensaje').value
+  };
+
+  socket.emit('new-message', message);
+}
 
 // -------------- CHAT -----------------------------------------
 
@@ -60,6 +88,7 @@ socket.on('product-added', message => {
 });
 
 const sendProduct = (that) => {
+  console.log(that);
   const message = {
     name: that.name.value,
     price: that.price.value,

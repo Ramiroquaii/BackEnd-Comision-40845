@@ -16,7 +16,8 @@
         <div class="jumbotron">
             <h1>Ingrese Nuevo Producto</h1>
             <br>
-            <form onsubmit="return sendProduct(this)">
+            <form>
+            <!-- <form onsubmit="return sendProduct(this)"> -->
                 <!-- Campo nombre del producto -->
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
@@ -36,7 +37,7 @@
                 </div>
 
                 <!-- Botón de envío -->
-                <button class="btn btn-success mt-3" type="submit">Agregar</button>
+                <button class="btn btn-success mt-3" id="btn-newProduct" type="submit">Agregar</button>
             </form>
             
             <hr>
@@ -51,7 +52,8 @@
         <div class="jumbotron">
             <h1>Mensajeria de Chat</h1>
             <br>
-            <form onsubmit="return sendMessage(this)">
+            <form>
+            <!-- <form onsubmit="return sendMessage(this)"> -->
                 <!-- Campo nombre del producto -->
                 <div class="form-group">
                     <label for="nombre">Nombre Usuario</label>
@@ -65,7 +67,7 @@
                 </div>
 
                 <!-- Botón de envío -->
-                <button class="btn btn-success mt-3" type="submit">Enviar</button>
+                <button class="btn btn-success mt-3" id="btn-newMessage" type="submit">Enviar</button>
             </form>
             <hr>
             <div id="chatContent">
