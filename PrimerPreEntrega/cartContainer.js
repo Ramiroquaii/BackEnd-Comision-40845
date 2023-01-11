@@ -8,15 +8,13 @@ class cartContainer {
         this.cartCollection = [];
     };
 
-    addCart = async (item) => {
+    addCart = async () => {
         const fileContent = await fs.promises.readFile(this.path, 'utf-8');
         const fileObj = JSON.parse(fileContent);
 
         let newId = Object.keys(fileObj).length + 1;
-        console.log(newId);
         const time = new Date().toLocaleString();
-        this.cartCollection.push({id: newId, timestamp: time, ...item});
-        console.log(this.cartCollection);
+        this.cartCollection.push({id: newId, timestamp: time, productos: []});
 
         fs.writeFileSync(`${this.path}`, JSON.stringify(this.cartCollection));
         return newId;
@@ -39,10 +37,10 @@ class cartContainer {
         
         if(index != -1){
             fileObj[index].timestamp = newData.timestamp;
-            fileObj[index].products = newData.products;
+            fileObj[index].productos = newData.productos;
         } else {
             fileObj[0].timestamp = newData.timestamp;
-            fileObj[0].products = newData.products;
+            fileObj[0].productos = newData.productos;
         }
 
         await fs.promises.writeFile(this.path, JSON.stringify(fileObj, null, 2));

@@ -1,13 +1,11 @@
 
 const fs = require('fs');
 
-
 class Container {
     constructor (name) {
         this.path =`./${name}.txt`;
         this.id = 1;
         this.timestamp = new Date().toLocaleString();
-        //fs.writeFileSync(`./${name}.txt`, '[]');
     }
 
     save = async (item) => {
@@ -42,6 +40,7 @@ class Container {
         fileObj[index].descripcion = newData.descripcion;
         fileObj[index].code = newData.code;
         fileObj[index].photo = newData.photo;
+        fileObj[index].price = newData.price;
         fileObj[index].stock = newData.stock;
 
         await fs.promises.writeFile(this.path, JSON.stringify(fileObj, null, 2));

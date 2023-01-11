@@ -7,6 +7,26 @@ Coder HouseCurso - Curso BackEnd
 
 *Tutoe Personal:* **Michel Douglas Ezequiel Chamarez Richards**
 
+# DESAFIO ENTREGABLE - Primer Entrega Pre Proyecyo Final
+EXPIRA EL MARTES 10/01/2022 23:59HS
+
+**npm run start - para lanzar el server en puerto 8080**
+**Se utiliza PostMan para evaluar la funcionalidad de todas las funciones**
+**Se implementa index.html en carpeta public a mode de frontend, prueba basica incompleta, se implementa fetch a la API local con metodos GET para traer los datos y mostrarlos en el navegador**
+
+1. El router base '/api/products' implementará cuatro funcionalidades:
+    a. GET: '/:id?' - Me permite listar todos los productos disponibles ó un producto por su id (disponible para usuarios y administradores).
+    b. POST: '/' - Para incorporar productos al listado (disponible para administradores).
+    c. PUT: '/:id' - Actualiza un producto por su id (disponible para administradores).
+    d. DELETE: '/:id' - Borra un producto por su id (disponible para administradores).
+
+2. El router base '/api/cart' implementará tres rutas disponibles para usuarios y administradores:
+    a. POST: '/' - Crea un carrito y devuelve su id.
+    b. DELETE: '/:id' - Vacía un carrito y lo elimina.
+    c. GET: '/:id/products' - Me permite listar todos los productos guardados en el carrito.
+    d. POST: '/:id/products/:id_prod' - Para incorporar productos al carrito por su id de producto.
+    e. DELETE: '/:id/products/:id_prod' - Eliminar un producto del carrito por su id de carrito y de producto.
+
 # DESAFIO ENTREGABLE - WEBSOCKETS
 EXPIRA EL MARTES 27/12/2022 23:59HS
 
