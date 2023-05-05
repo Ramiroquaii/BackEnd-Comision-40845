@@ -1,0 +1,35 @@
+.btn {
+    width: 150px;
+    height: 100px;
+}
+
+.titulo {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.usersPanel{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.user{
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user p, h3 {padding: 0; margin: 0;}
+
+.user img {
+    padding: 0;
+    margin: 0;
+    width: 60px;
+    height: 60px;
+}

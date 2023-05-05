@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:8080"
+  phases:
+    - duration: 10
+      arrivalRate: 4
+      rampTo: 8
+      name: "TEST"
+
+scenarios:
+  - name: "Get long process page"
+    flow:
+      - get:
+          url: "/api/randoms/100"
+          name: "Get data"

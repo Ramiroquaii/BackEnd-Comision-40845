@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "timestamp": "11/1/2023, 00:26:12",
+    "productos": [
+      {
+        "id": 1,
+        "timestamp": "10/1/2023, 23:14:53",
+        "name": "Producto1",
+        "descripcion": "Producto de prueba.",
+        "code": 1234,
+        "photo": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+        "price": 99.2,
+        "stock": 1
+      }
+    ]
+  }
+]

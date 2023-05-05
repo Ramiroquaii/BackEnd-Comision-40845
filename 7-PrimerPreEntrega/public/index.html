@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Main API Administrador</title>
+</head>
+<body>
+    <div>
+        <h1>Ingrese Nuevo Producto</h1>
+            <br>
+            <form id="formAddPrd">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" class="form-control" type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="descrip">Descripcion</label>
+                    <input id="descrip" class="form-control" type="text" name="descrip" required>
+                </div>
+                <div class="form-group">
+                    <label for="codigo">Codigo</label>
+                    <input id="codigo" class="form-control" type="number" step="1" name="codigo" required>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto URL</label>
+                    <input id="foto" class="form-control" type="url" name="foto" required>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input id="precio" class="form-control" type="number" step="0.01" name="price" required>
+                </div>
+                <div class="form-group">
+                    <label for="stock">Codigo</label>
+                    <input id="stock" class="form-control" type="number" step="1" name="stock" required>
+                </div>
+
+                <input type="button" class="btn btnAdd" id="btnAdd" value="Agregar">
+            </form>
+    </div>
+    <div class="btnBar">
+        <input type="button" class="btn btnProductos" id="btnProd" value="VER PRODUCTOS">
+        <input type="button" class="btn btnCarritos" id="btnCart" value="VER CARRITOS">
+    </div>
+    <div class="productsPanel" id="listProducts">
+
+    </div>
+    <div class="cartPanel" id="listCarts">
+
+    </div>
+
+    <script src="./indexScript.js" defer></script>
+</body>
+</html>

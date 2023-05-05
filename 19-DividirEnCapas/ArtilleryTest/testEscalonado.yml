@@ -1,0 +1,21 @@
+config:
+  target: "http://localhost"
+  phases:
+    - duration: 120
+      arrivalRate: 4
+      rampTo: 10
+      name: "Warm up"
+    - duration: 600
+      arrivalRate: 15
+      name: "Steady state"
+    - duration: 120
+      arrivalRate: 15
+      rampTo: 4
+      name: "Cool down"
+
+scenarios:
+  - name: "Simple scenario"
+    flow:
+      - get:
+          url: "/api/randomNumbers/100"
+          name: "Get data"

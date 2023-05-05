@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Main API Administrador</title>
+</head>
+<body>
+    <div>
+        <p>Ruta: indicar URL "/mock" para mostrar random data. <a href="http://localhost:3000/mock">Clik to Mock</a></p>
+        <p>Ruta: indicar URL "/faker" para mostrar random data usando FAKER. <a href="http://localhost:3000/faker">Clic to Faker</a></p>
+    </div>
+    <div class="btnBar">
+        <input type="button" class="btn btnUsuarios" id="btnProd" value="VER USUARIOS">
+    </div>
+    <div class="titulo" id="titulo"></div>
+    <div class="usersPanel" id="listProducts">
+
+    </div>
+
+    <script src="./indexScript.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js" defer></script>
+</body>
+</html>

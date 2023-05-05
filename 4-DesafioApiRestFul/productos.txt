@@ -1,0 +1,5 @@
+[
+{"id":1,"name":"Abradolf Lincler","image":"https://rickandmortyapi.com/api/character/avatar/7.jpeg"},
+{"id":2,"name":"Albert Einstein","image":"https://rickandmortyapi.com/api/character/avatar/11.jpeg"},
+{"id":3,"name":"Ants in my Eyes Johnson","image":"https://rickandmortyapi.com/api/character/avatar/20.jpeg"}
+]
