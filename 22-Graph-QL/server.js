@@ -1,4 +1,12 @@
+// LO QUE FALTA 
+// Dividir en Capas        6-abr		Clase 38
+// Testeando API	          25-abr	Clase 42
+// Reformar para Framework	9-may	  Proxima Entrega	Clase 46
+// Servidor Deno	          11-may	Ultima Clase	Clase 47
+
+
 const { serverPort, serverMode, sessionSecret } = require('./environment.js');
+const { logger } = require('./logs/log4jsConfig.js');
 const path = require('path');  // Para el uso de rutas filePaths absolutos.
 
 const express = require('express');
@@ -99,7 +107,7 @@ app.get('/info', (req, res) => {
 });
 
 io.on('connection', async client => {
-  console.log(`Client ${client.id} connected`);
+  logger.trace(`Client ${client.id} connected`);
 
   productSocket(client, io.sockets);
   messageSocket(client, io.sockets);
@@ -115,6 +123,11 @@ io.on('connection', async client => {
 });
 
 server.listen(serverPort, () => {
-  console.log(`Servidor http WebSocket en puerto ${server.address().port} - PID: ${process.pid}`);
+  logger.trace(`Servidor http WebSocket en puerto ${server.address().port} - PID: ${process.pid}`);
 });
-server.on("error", error => console.log(`Error en servidor ${error}`));
+
+server.on("error", error => {
+    logger.trace(`Server cannot START - See log files for reason.`);
+    logger.error(`Server cannot START - reason below:\n${error}`);
+  }
+);

@@ -51,14 +51,13 @@ userApiRouter.post('/register', async (req, res) => {
     try {
       const hash = await bcrypt.hash(pwd, 5);
       let inserted = await addUser({user: usr, passwd: hash, age: age, mail: mail, phone: phone});
-      if (inserted.status == 0) {res.json({ estado: 0, mensaje: `USUARIO INSERTADO CON EXITO ID --> ${inserted.id}`});}
-      if (inserted.status == -1) {res.json({ estado: 1, mensaje: `ERROR AL AGREGAR USUARIO`});}
+      if (inserted.status == 0) {res.json({ estado: 0, mensaje: `USUARIO INSERTADO CON EXITO !!\n\nID: ${inserted.id}` });}
+      if (inserted.status == -1) {res.json({ estado: 1, mensaje: `ERROR AL AGREGAR USUARIO !!\n\nINTENTE NUEVAMENTE`});}
     } catch (error) {
-      console.error(error);
-      res.json({ estado: 1, mensaje: `ERROR AL ENCRYPTAR - INTENTE NUEVAMENTE`});
+      res.json({ estado: 1, mensaje: `ERROR INESPERADO - INTENTE NUEVAMENTE`});
     }
   } else {
-    res.json({ estado: 1, mensaje: `ERROR USUARIO EXISTENTE --> ${JSON.stringify(storedUser)}` });
+    res.json({ estado: 1, mensaje: `ERROR USUARIO EXISTENTE` });
   }
 });
 

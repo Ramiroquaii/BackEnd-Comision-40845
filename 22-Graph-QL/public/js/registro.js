@@ -77,7 +77,16 @@ async function validateForm(event) {
         headers: { 'Content-Type': 'application/json' }
     })
         .then(response => response.json())
-        .then(data => console.log(data));
-
-    //return true;
+        .then(data => {
+            console.log(data);
+            if(data.estado==0){
+                alert(data.mensaje);
+                // Redireccionar a una página dentro del mismo sitio web, raiz para volver al login.
+                window.location.href = "/";
+            }
+            if(data.estado==1){
+                alert(data.mensaje);
+            }
+        }
+    );
 }

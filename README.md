@@ -29,8 +29,17 @@ EXPIRA EL MARTES 18/04/2023 A LAS 23:59HS
 - Falta completar contenido se ira cargando.
 
 
-# DESAFIO ENTREGABLE - Dividir en capas nuestro proyecto
+# DESAFIO ENTREGABLE - Dividir en capas nuestro proyecto DAO - DTO
 EXPIRA EL JUEVES 06/04/2023 A LAS 23:59HS
+
+- El directorio DTO pone a disposicion los metodo asociadoa a las acciones posibles sobre los productos pero independisandose de la tecnologia o persistencia a usar:
+*Desarticula la persistencia.
+*Conecta la app con el DAO en uso.
+*Crea una capa adicional de presentacion de los datos retornados desde la persistencia para entregarlos en un formato diferente de sr necesario en la app.
+
+- El directorio DAO ejemplifica el uso de distintos accesos a persistencia en este caso:
+ProductosMemoriaRAM.js --> para hacer uso de persistencia en memoria ram a traves de un vector de productos con los metodos asociados.
+ProductosMongoAtalas.js --> para hacer uso de conexion a la DB Atlas con los metodos respectivos para la mismas funciones pero alojando los datos en la DB en lugar de la memoria.
 
 - Debido a que la extensión del proyecto no posee una logitud y compejidad muy extensa se demuestra el concepto de capa en una funcion del mismo done podriamos llevar este concepto a la practica:
 
