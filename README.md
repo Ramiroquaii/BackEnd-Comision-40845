@@ -9,6 +9,25 @@ Coder HouseCurso - Curso BackEnd
                   **Estanislao Valdez** (hasta el 21/03/2023)
                   **Michel Douglas Ezequiel Chamarez Richards** (hasta el 02/01/2023)
 
+
+# DESAFIO ENTREGABLE - Uso de Orto Framework - KOA
+EXPIRA EL MARTES 9/05/2023 A LAS 23:59HS
+
+>>Se reemplaza para un pequeño ejemplo el uso de express por el frameword KOA.
+>>Para lanzar el programa usar: node serverKOA.js -p 8099 (si no se especifica -p el puerto por defecto es 3000).
+>>En esta oportunidad no hay frontend solo se retornan objetos JSON - Usar POSTMAN para probar metodo POST.
+
+**Se implementan las rutas:**
+- GET - /products => Listar todos los productos.
+- GET - /products/:name => Buscar y listar por nombre.
+- POST - /products => Agregar un producto, en el body del request enviar { nombre": "String", "precio": float, "foto": String } el ID es asignado en la base de datos.
+
+>>Se reorganiza el contenido dividiendo las capas del servidor:
+DAO - acceso a base de datos o memoria (el ejemplo se basa en MongoAtlas en la Nube).
+DTO - presentacion de datos (serialización).
+ROUTES - capa de ruteo o entry poits definidos.
+
+
 # DESAFIO ENTREGABLE - GraphQL
 EXPIRA EL MARTES 2/05/2023 A LAS 23:59HS
 

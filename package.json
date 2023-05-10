@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Ramiroquaii/BackEnd-Comision-40845#readme",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@koa/router": "^12.0.0",
     "barcode-js": "^13.9.3174",
     "bcrypt": "^5.1.0",
     "chai": "^4.3.7",
@@ -41,6 +42,8 @@
     "find-free-port": "^2.0.0",
     "firebase": "^9.21.0",
     "knex": "^2.4.2",
+    "koa": "^2.14.2",
+    "koa-body": "^6.0.1",
     "log4js": "^6.9.1",
     "mime": "^3.0.0",
     "mocha": "^10.2.0",
