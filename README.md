@@ -9,6 +9,24 @@ Coder HouseCurso - Curso BackEnd
                   **Estanislao Valdez** (hasta el 21/03/2023)
                   **Michel Douglas Ezequiel Chamarez Richards** (hasta el 02/01/2023)
 
+# DESAFIO ENTREGABLE - DENO
+EXPIRA EL JUEVES 9/05/2023 A LAS 23:59HS
+
+**Para ejecutar comando: deno run server.ts**
+
+>>Implementando DENO.
+>>Pruebas con postman:
+- Se completan las rutas agregadas:
+GET /api/products/:productId' -> retorna el producto si existe.
+GET /api/products -> retorna todos los productos.
+POST /api/products -> agregar un nuevo producto.
+POST /api/products/productId -> actualiza la informacion del producto.
+DELETE /api/products -> parametro id por body para ser eliminado.
+
+>>Base de Datos Local MongoDB (Compass para edicion y acceso visual a la DB).
+-Base ecommerce
+-Collection productos
+
 
 # DESAFIO ENTREGABLE - Uso de Orto Framework - KOA
 EXPIRA EL MARTES 9/05/2023 A LAS 23:59HS
