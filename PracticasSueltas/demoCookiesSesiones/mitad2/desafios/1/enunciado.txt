@@ -1,0 +1,27 @@
+﻿Utilizando el desafío de session realizado en la clase anterior (transcripto al final), cuya persistencia era en memoria del servidor, modificar para lograr almacenar las sesiones de usuario en el file system.
+
+La carpeta destino será 'sesiones' y estará creada en el directorio anterior al proyecto.
+Verificar que con las distintas sesiones de usuario se crean archivos dentro de esa carpeta, cuyos nombres corresponden a las cookies de sesion activas.
+
+Fijar la duración del tiempo de vida de la sesion y de su cookie de 1 minuto. 
+
+Analizar los resultados.
+
+----------------------------------------------------------------------------------------------
+Ejercicio session clase anterior:
+
+Realizar un programa de backend que establezca sesiones de usuarios en el servidor.
+
+Cuando un cliente visita el sitio por primera vez en la ruta 'root', se presentará el mensaje de 'Te damos la bienvenida'. Con los siguientes request de ese mismo usuario, deberá aparecer el número de visitas efectuadas. El cliente podrá ingresar por query params el nombre, en cuyo caso se añadirá a los mensajes devueltos, por ejemplo: 'Bienvenido Juan' ó 'Juan visitaste la página 3 veces'. Ese nombre sólo se almacenará la primera vez que el cliente visite el sitio.
+
+Se dispondrá de una ruta 'olvidar' que permita reiniciar el proceso de visitas para el usuario.
+En caso de que no haya error, se retornará el mensaje 'Hasta luego' más el nombre del cliente (de existir), caso contario un objeto con el siguiente formato: { error : descripción }.
+Luego de requerir esa ruta, el efecto será como el de visitar el sitio por primera vez.
+
+Notas: 
+- Utilizar el middleware express como estructura de servidor.
+- Generar los request con varios navegadores (Chrome, edge, Firefox) para simular los distintos clientes en forma local.
+
+
+
+

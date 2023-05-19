@@ -15,8 +15,10 @@ log4js.configure({
 })
 
 const logger = log4js.getLogger();
+const loggerWarn = log4js.getLogger('warning');
+const loggerError = log4js.getLogger('error');
 
-module.exports = { logger };
+module.exports = { logger, loggerWarn, loggerError };
 
 // EJEMPLOS DE USO con objeto logger
 // logger.trace('Trace message');

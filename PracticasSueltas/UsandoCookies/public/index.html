@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Cookies class!</title>
+</head>
+
+<body>
+    <h2>POST</h2>
+
+    <form action="/cookies" method="post">
+        <span>name</span>
+        <input type="text" name="name">
+        <span>value</span>
+        <input type="text" name="value">
+        <span>maxAge</span>
+        <input type="number" name="maxAge">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h2>DELETE</h2>
+    <span>Name</span>
+    <input type="text" id="cookieToDelete">
+    <button onclick="deleteCookie(document.getElementById('cookieToDelete').value)">Submit</button>
+
+    <script>
+        function deleteCookie(formValue) {
+            console.log(formValue)
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("DELETE", `/cookies/${formValue}`, true);
+            xhttp.send();
+        }
+    </script>
+
+</body>

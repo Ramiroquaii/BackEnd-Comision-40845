@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webcam Image Upload</title>
+</head>
+
+<body>
+    <h1>Webcam Image Upload</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <br />
+    <button id="capture">Capture</button>
+    <br />
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <br />
+    <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" style="display:none;">
+        <input type="submit" value="Upload" style="display:none;">
+    </form>
+    <script>
+        // Get access to the webcam stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                var video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (error) {
+                console.log('Error accessing webcam:', error);
+            });
+
+        // Capture image from webcam and convert it to file
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var captureButton = document.getElementById('capture');
+        var uploadForm = document.getElementById('upload-form');
+        var fileInput = document.getElementById('image');
+
+        captureButton.addEventListener('click', function () {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function (blob) {
+                var file = new File([blob], 'image.jpg', { type: 'image/jpeg' });
+                fileInput.files[0] = file;
+                uploadForm.submit();
+            }, 'image/jpeg', 0.8);
+        });
+    </script>
+</body>
+
+</html>
